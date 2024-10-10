@@ -27,3 +27,6 @@ auto it = hashmap.find(nums2[i]);
         }
     return true;
     }
+
+    // if using auto it = map.begin() then you can access the value by it->first or it->second else map.first
+    // map.second;
