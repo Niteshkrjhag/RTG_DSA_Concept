@@ -1,0 +1,38 @@
+### Approach:
+
+The problem asks to round a string representation of a number to the nearest multiple of 10. The rounding follows standard rules: 
+- If the last digit is 5 or below, round down (set the last digit to '0').
+- If the last digit is greater than 5, round up by adding 1 to the previous digit and converting the last digit to '0'.
+
+In case of a carry (e.g., the previous digit is '9'), the rounding operation will propagate back through the number, affecting multiple digits or even extending the length of the number.
+
+### Algorithm:
+
+1. **Step 1: Handle Single Digit Case**
+   - If the string has a length of 1:
+     - If the single digit is greater than 5, return "10" (since it will round up to the next multiple of 10).
+     - If it's 5 or below, return "0" (round down).
+
+2. **Step 2: Rounding**
+   - Extract the last digit from the string.
+   - If the last digit is less than or equal to 5:
+     - Replace the last digit with '0' (round down).
+   - If the last digit is greater than 5:
+     - Check the previous digit:
+       - If the previous digit is not '9', increment it by 1, and replace the last digit with '0'.
+       - If the previous digit is '9', propagate the carry backward (set the current digit and previous '9's to '0' and increment the first non-'9' digit).
+
+3. **Step 3: Handle Carry Propagation**
+   - Traverse the string backward from the last digit.
+   - For every digit that is '9', set it to '0'.
+   - Stop when a non-'9' digit is found and increment it by 1.
+   - If all digits are '9', prepend '1' to the string and append '0' at the end.
+
+4. **Step 4: Return the Result**
+   - Return the updated string after rounding.
+
+### Time Complexity:
+- The time complexity is **O(n)**, where `n` is the length of the string. In the worst case, the carry propagation will visit each digit once, making it a linear traversal of the string.
+
+### Space Complexity:
+- The space complexity is **O(n)**, where `n` is the length of the string. This is due to the storage required for the string and any additional modifications made during rounding.
