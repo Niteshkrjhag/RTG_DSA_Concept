@@ -1,0 +1,14 @@
+Properties of XOR:
+XOR is a bitwise operation where bits are compared. For two identical numbers x ^ x = 0. This means if you XOR the entire array and get zero, it might be possible to split the array into subsets that have equal XOR.
+
+If the XOR of the entire array is non-zero, it's impossible to split it into two groups with equal XOR values. This is because the total XOR of both subsets must equal zero for them to be the same.
+
+Why XOR of Entire Array is Important:
+First, XOR all elements of the array together. Let this result be x. If x is zero, it is possible to split the array into two groups with the same XOR values. If x is not zero, it's impossible.
+
+Counting the Splits:
+If x (XOR of the entire array) is zero, the number of valid ways to split the array can be calculated using combinatorics. Specifically, if the XOR of the entire array is zero, each subset can be formed by selecting elements in a way that maintains the XOR property.
+
+The number of ways to form subsets with equal XOR from an array of size n is 
+2^(n-1)-1;
+. This comes from the idea that any subset selection (except the full set and empty set) can be one possible valid grouping.

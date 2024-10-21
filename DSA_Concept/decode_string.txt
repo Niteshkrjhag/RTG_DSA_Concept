@@ -1,0 +1,19 @@
+Initialize a stack:
+    Use a stack to store characters while traversing the input string s.
+    
+Traverse the input string s character by character:
+For each character ch in s:
+    If ch is ']':
+        Pop characters from the stack until you find '[', forming the decoded substring temp.
+        Discard the '[' character from the stack.
+        Next, extract the number preceding the '[', which tells how many times to repeat the substring. This number could be multi-digit:
+            Pop digits from the stack (as characters), convert them into an integer a.
+        Repeat the substring temp a times and push the repeated result back onto the stack.
+
+    If ch is not ']':
+        Push the character ch onto the stack.
+
+Final construction:
+    Once the traversal of s is complete, pop all the characters left in the stack and build the final decoded string by appending them in the correct order.
+
+Return the final decoded string.

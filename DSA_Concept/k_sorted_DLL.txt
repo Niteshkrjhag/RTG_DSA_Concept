@@ -1,0 +1,56 @@
+% Algorithm: Sort a K-Sorted Doubly Linked List
+- Input:
+A doubly linked list where each node is at most k positions away from its correct position.
+Integer k, representing how far nodes can be from their sorted position.
+
+- Output:
+A sorted doubly linked list.
+
+? Steps:
+# Handle the edge case:
+If the list is empty (head == nullptr), return nullptr.
+
+# Initialize a Min-Heap:
+Create a min-heap (priority queue) to store the elements of the list.
+The heap helps extract the smallest element efficiently in every step, ensuring that we place it at its correct position.
+Add the first k+1 elements to the heap:
+Start from the head of the list.
+
+#Add the first k+1 elements of the list into the min-heap.
+Since each node is at most k positions away from its target position, the correct element to place at each position must be within the first k+1 elements.
+
+# Process the entire list:
+Traverse the list starting from the head:
+Extract the minimum element from the heap and assign it to the current node of the list.
+Move the current pointer (cur) to the next node in the list.
+For each extracted element, add the next element from the unsorted part of the list (if it exists) to the heap.
+Repeat this process until the entire list has been processed and sorted.
+
+# Return the head of the sorted list.
+
+
+// Define the structure for a doubly linked list node
+struct DLLNode {
+    int data;           // Data stored in the node
+    DLLNode* next;      // Pointer to the next node
+    DLLNode* prev;      // Pointer to the previous node
+
+    // Constructor to easily create a node with given data
+    DLLNode(int val) {
+        data = val;
+        next = prev = nullptr;
+    }
+};
+
+# To create min Heap define as follow: 
+            priority_queue<int,vector<int>,greater<int>> pq;
+
+# To create max Heap define as follow:
+            priority_queue<int> pq;              // By default max Heap
+
+# Operation that can be applied on priority Queue:
+            pq.top();
+            pq.push(___);
+            pq.pop(____);
+            pq.empty();
+            pq.size();
