@@ -1,0 +1,68 @@
+This code is designed to delete a node with a specific key from a circular linked list. Let’s break down its steps:
+
+- No Node Case:
+If head is nullptr, the list is empty, and there's nothing to delete. So, it immediately returns nullptr.
+
+- Finding the Tail Node:
+The code first iterates to find the tail node (the node pointing back to head). This is important for circular linked lists to handle cases where the head node is deleted.
+
+- Single-Node List Case:
+If there is only one node in the list (tail == head), and that node contains the key, it deletes the head and returns nullptr, indicating the list is now empty.
+
+- Multiple Node List:
+With multiple nodes in the list, the code uses three pointers:
+prev: Keeps track of the previous node.
+curr: The current node being examined.
+forw: The node after curr.
+It traverses the list until it finds the node with the key.
+If curr is head (and has the key), it deletes the head node and assigns head to forw, while updating prev->next to the new head.
+If curr is another node with the key, it removes curr by updating prev->next to skip curr and then deletes curr.
+
+- Tail Node Deletion:
+After the loop, if the key is in the last node (tail), it checks curr and deletes it while keeping the circular property by linking prev->next back to head.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Node* deleteNode(Node* head, int key) 
+{
+    if (!head) return nullptr;
+    
+    Node* tail = head;
+    while (tail->next != head) {
+        tail = tail->next;
+    }
+    
+    // Single-node case
+    if (head == tail && head->data == key) {
+        delete head;
+        return nullptr;
+    }
+    
+    Node *curr = head, *prev = tail;
+    
+    // Traverse the list
+    do {
+        if (curr->data == key) {
+            prev->next = curr->next;
+            if (curr == head) {  // Updating head if it's deleted
+                head = head->next;
+            }
+            delete curr;
+            return head;
+        }
+        prev = curr;
+        curr = curr->next;
+    } while (curr != head);
+    
+    return head;
+}

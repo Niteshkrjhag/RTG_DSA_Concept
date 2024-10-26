@@ -1,0 +1,7 @@
+- whenever it's about sub-array or sub-string two DS  vector, Hashmap(unordered_map or Ordered_map), sliding window
+
+- whenever middle of Linked List => slow and fast pointers
+- whenever deletion of node form LL => prev and curr pointers  // think of edge cases also
+- whenever there is rounding of turns ==> try to use two queue
+- whenever you want to do one more task while condition is being false then think of do while loop
+
